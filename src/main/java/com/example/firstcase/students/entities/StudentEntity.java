@@ -2,7 +2,7 @@ package com.example.firstcase.students.entities;
 
 import javax.persistence.*;
 
-@Entity
+@Entity(name = "student")
 public class StudentEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
