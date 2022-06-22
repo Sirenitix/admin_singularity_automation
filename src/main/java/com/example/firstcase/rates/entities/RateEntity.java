@@ -1,30 +1,30 @@
 package com.example.firstcase.rates.entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import com.example.firstcase.students.entities.StudentEntity;
+import lombok.Data;
 
-@Entity
+import javax.persistence.*;
+
+@Entity (name= "rate")
+@Data
 public class RateEntity {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
+    @OneToOne
+    @JoinColumn(name = "student_id")
+    StudentEntity studentEntity;
     @Column
-    String email;
+    byte diploma;
     @Column
-    String phoneNumber;
+    byte programmingExperience;
     @Column
-    String city;
+    byte stack;
     @Column
-    boolean diploma;
+    byte programmingParticipation;
     @Column
-    String technicalSkills;
+    byte majorIT;
     @Column
     byte englishLevel;
-    @Column
-    int workExperience;
-    @Column
-    int programmingExperience;
-    @Column
-    int coursesExperience;
 
 }

@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Data
 public class StudentEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     @Column
     String fullName;
@@ -20,7 +20,7 @@ public class StudentEntity {
     String city;
     @Column
     boolean diploma;
-    @Column (name = "programming_exp")
+    @Column(name = "programming_exp")
     ExperienceTime programming;
     @Column
     Stack stack;
@@ -30,8 +30,5 @@ public class StudentEntity {
     boolean majorIT;
     @Column
     EnglishLevel englishLevel;
-
-
-
 
 }
