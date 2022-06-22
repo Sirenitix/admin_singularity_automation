@@ -11,15 +11,15 @@ import javax.persistence.Column;
 @Data
 public class StudentRegistrationRequest {
 
+
     String fullName;
     String email;
     String phoneNumber;
     boolean diploma;
-    @Column (name = "programming_exp")
-    ExperienceTime programming;
     Boolean comExp;
-    Stack stack;
+    ExperienceTime programming;
     boolean programmingParticipation;
+    Stack stack;
     boolean majorIT;
     EnglishLevel englishLevel;
 }

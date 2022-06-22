@@ -20,10 +20,12 @@ public class StudentEntity {
     boolean diploma;
     @Column
     Boolean comExp;
-    @Column
-    Stack stack;
+    @Column(name="programming_exp")
+    ExperienceTime programming;
     @Column
     boolean programmingParticipation;
+    @Column
+    Stack stack;
     @Column
     boolean majorIT;
     @Column

@@ -6,7 +6,8 @@ CREATE TABLE student
     phone_number              VARCHAR(255) NULL,
     city                      VARCHAR(255) NULL,
     diploma                   BOOLEAN      NULL,
-    com_exp                    BOOLEAN      NULL,
+    com_exp                   BOOLEAN      NULL,
+
     stack                     INT          NULL,
     programming_participation BOOLEAN      NULL,
     majorit                   BOOLEAN      NULL,
