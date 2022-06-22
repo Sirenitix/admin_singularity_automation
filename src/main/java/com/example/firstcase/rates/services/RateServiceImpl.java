@@ -21,11 +21,11 @@ public class RateServiceImpl implements RateService {
         rateEntity.setStudentEntity(studentEntity);
         if (studentEntity.isDiploma()) rateEntity.setDiploma((byte) 1);
 
-        if (studentEntity.getProgramming().equals(ExperienceTime.F1TO3MONTH))
+        if (studentEntity.getProgramming_exp().equals(ExperienceTime.F1TO3MONTH))
             rateEntity.setProgrammingExperience((byte) 1);
-        else if (studentEntity.getProgramming().equals(ExperienceTime.F3TO6MONTH))
+        else if (studentEntity.getProgramming_exp().equals(ExperienceTime.F3TO6MONTH))
             rateEntity.setProgrammingExperience((byte) 2);
-        else if (studentEntity.getProgramming().equals(ExperienceTime.F6TO12MONTH))
+        else if (studentEntity.getProgramming_exp().equals(ExperienceTime.F6TO12MONTH))
             rateEntity.setProgrammingExperience((byte) 3);
         else rateEntity.setProgrammingExperience((byte) 0);
 
