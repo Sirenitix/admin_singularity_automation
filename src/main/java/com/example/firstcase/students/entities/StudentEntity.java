@@ -1,11 +1,14 @@
 package com.example.firstcase.students.entities;
 
+import lombok.Data;
+
 import javax.persistence.*;
 
 @Entity(name = "student")
+@Data
 public class StudentEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
     @Column
     String firstName;
