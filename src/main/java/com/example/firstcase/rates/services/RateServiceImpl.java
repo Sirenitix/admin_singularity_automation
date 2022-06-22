@@ -2,12 +2,11 @@ package com.example.firstcase.rates.services;
 
 import com.example.firstcase.rates.entities.RateEntity;
 import com.example.firstcase.rates.repositories.RateRepository;
-import com.example.firstcase.students.entities.EnglishLevel;
-import com.example.firstcase.students.entities.ExperienceTime;
-import com.example.firstcase.students.entities.Stack;
-import com.example.firstcase.students.entities.StudentEntity;
+import com.example.firstcase.students.entities.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 
 @Service
@@ -21,29 +20,26 @@ public class RateServiceImpl implements RateService {
         rateEntity.setStudentEntity(studentEntity);
         if (studentEntity.isDiploma()) rateEntity.setDiploma((byte) 1);
 
-        if (studentEntity.getProgramming_exp().equals(ExperienceTime.F1TO3MONTH))
+        if (studentEntity.getComExp().name().equals(ExperienceTime.F1TO6MONTH.name()))
             rateEntity.setProgrammingExperience((byte) 1);
-        else if (studentEntity.getProgramming_exp().equals(ExperienceTime.F3TO6MONTH))
+        else if (studentEntity.getComExp().name().equals(ExperienceTime.F6TO12MONTH.name()))
             rateEntity.setProgrammingExperience((byte) 2);
-        else if (studentEntity.getProgramming_exp().equals(ExperienceTime.F6TO12MONTH))
-            rateEntity.setProgrammingExperience((byte) 3);
-        else rateEntity.setProgrammingExperience((byte) 0);
+        else if(studentEntity.getComExp().name().equals(ExperienceTime.NO.name()) )
+                rateEntity.setProgrammingExperience((byte) 0);
 
-        if (studentEntity.getStack().equals(Stack.C))
-            rateEntity.setStack((byte) 1);
-        else if (studentEntity.getStack().equals(Stack.CPLUS))
-            rateEntity.setStack((byte) 1);
-        else if (studentEntity.getStack().equals(Stack.GO))
-            rateEntity.setStack((byte) 2);
-        else if (studentEntity.getStack().equals(Stack.JAVA))
-            rateEntity.setStack((byte) 5);
-        else if (studentEntity.getStack().equals(Stack.LINUX))
-            rateEntity.setStack((byte) 1);
-        else if (studentEntity.getStack().equals(Stack.PYTHON))
-            rateEntity.setStack((byte) 3);
-        else if (studentEntity.getStack().equals(Stack.SQL))
-            rateEntity.setStack((byte) 2);
-        else rateEntity.setStack((byte) 0);
+//
+
+        if (studentEntity.getProgramming().name().equals(StudyTime.F1TO6MONTH.name()))
+            rateEntity.setProgrammingExperience((byte) 1);
+        else if (studentEntity.getProgramming().name().equals(StudyTime.F6TO12MONTH.name()))
+            rateEntity.setProgrammingExperience((byte) 2);
+        else if(studentEntity.getProgramming().name().equals(StudyTime.NO.name()) )
+            rateEntity.setProgrammingExperience((byte) 0);
+        else if(studentEntity.getProgramming().name().equals(StudyTime.FROM12MONTH.name()) )
+            rateEntity.setProgrammingExperience((byte) 3);
+
+//
+
 
         if (studentEntity.isProgrammingParticipation()) rateEntity.setProgrammingParticipation((byte) 1);
         if (studentEntity.isMajorIT()) rateEntity.setMajorIT((byte) 1);
@@ -60,6 +56,8 @@ public class RateServiceImpl implements RateService {
 
         rateRepository.save(rateEntity);
     }
+
+
 }
 
 

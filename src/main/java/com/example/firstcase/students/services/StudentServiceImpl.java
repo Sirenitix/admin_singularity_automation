@@ -1,14 +1,13 @@
 package com.example.firstcase.students.services;
 
 import com.example.firstcase.rates.services.RateService;
-import com.example.firstcase.students.entities.EnglishLevel;
-import com.example.firstcase.students.entities.ExperienceTime;
-import com.example.firstcase.students.entities.Stack;
-import com.example.firstcase.students.entities.StudentEntity;
+import com.example.firstcase.students.entities.*;
 import com.example.firstcase.students.models.StudentRegistrationRequest;
 import com.example.firstcase.students.repositories.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class StudentServiceImpl implements StudentService{
@@ -22,19 +21,29 @@ public class StudentServiceImpl implements StudentService{
 
         StudentEntity studentEntity = new StudentEntity();
 
-        studentEntity.setFullName(request.getFullName());
-        studentEntity.setEmail(request.getEmail());
-        studentEntity.setPhoneNumber(request.getPhoneNumber());
-        studentEntity.setDiploma(request.isDiploma());
-        studentEntity.setComExp(request.getComExp());
-        studentEntity.setProgramming_exp(request.getProgramming());
-        studentEntity.setProgrammingParticipation(request.isProgrammingParticipation());
-        studentEntity.setStack(request.getStack());
-        studentEntity.setMajorIT(request.isMajorIT());
-        studentEntity.setEnglishLevel(request.getEnglishLevel());
+            studentEntity.setFullName(request.getFullName());
+            studentEntity.setEmail(request.getEmail());
+            studentEntity.setPhoneNumber(request.getPhoneNumber());
+            studentEntity.setDiploma(request.isDiploma());
+            studentEntity.setComExp(StudyTime.valueOf(request.getComExp()));
+            studentEntity.setProgramming(ExperienceTime.valueOf(request.getProgramming()));
+            studentEntity.setProgrammingParticipation(request.isProgrammingParticipation());
+            studentEntity.setStack(Stack.valueOf(request.getStack()));
+            studentEntity.setMajorIT(request.isMajorIT());
+            studentEntity.setEnglishLevel(EnglishLevel.valueOf(request.getEnglishLevel()));
 
         studentRepository.save(studentEntity);
         rateService.saveRate(studentEntity);
 
+    }
+
+    @Override
+    public List<StudentEntity> getAllStudentsForJobOff() {
+        return studentRepository.findAllByProgrammingEquals(ExperienceTime.FROM12MONTH);
+    }
+
+    @Override
+    public List<StudentEntity> getAllStudents() {
+        return studentRepository.findAllByProgrammingIsNot(ExperienceTime.FROM12MONTH);
     }
 }

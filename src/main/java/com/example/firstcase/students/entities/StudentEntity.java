@@ -19,9 +19,9 @@ public class StudentEntity {
     @Column
     boolean diploma;
     @Column
-    Boolean comExp;
-    @Column
-    ExperienceTime programming_exp;
+    StudyTime comExp;
+    @Column(name = "programming_exp")
+    ExperienceTime programming;
     @Column
     boolean programmingParticipation;
     @Column
@@ -30,8 +30,5 @@ public class StudentEntity {
     boolean majorIT;
     @Column
     EnglishLevel englishLevel;
-
-
-
 
 }
