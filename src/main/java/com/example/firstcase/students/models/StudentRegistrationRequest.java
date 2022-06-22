@@ -14,10 +14,10 @@ public class StudentRegistrationRequest {
     String fullName;
     String email;
     String phoneNumber;
-    String city;
     boolean diploma;
     @Column (name = "programming_exp")
     ExperienceTime programming;
+    Boolean comExp;
     Stack stack;
     boolean programmingParticipation;
     boolean majorIT;

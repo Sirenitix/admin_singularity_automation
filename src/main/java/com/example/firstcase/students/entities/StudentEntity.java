@@ -17,11 +17,9 @@ public class StudentEntity {
     @Column
     String phoneNumber;
     @Column
-    String city;
-    @Column
     boolean diploma;
-    @Column(name = "programming_exp")
-    ExperienceTime programming;
+    @Column
+    Boolean comExp;
     @Column
     Stack stack;
     @Column
@@ -30,5 +28,8 @@ public class StudentEntity {
     boolean majorIT;
     @Column
     EnglishLevel englishLevel;
+
+
+
 
 }

@@ -22,14 +22,12 @@ public class StudentServiceImpl implements StudentService{
         studentEntity.setFullName(request.getFullName());
         studentEntity.setEmail(request.getEmail());
         studentEntity.setPhoneNumber(request.getPhoneNumber());
-        studentEntity.setCity(request.getCity());
         studentEntity.setDiploma(request.isDiploma());
-        studentEntity.setProgramming(request.getProgramming());
         studentEntity.setStack(request.getStack());
         studentEntity.setProgrammingParticipation(request.isProgrammingParticipation());
         studentEntity.setMajorIT(request.isMajorIT());
         studentEntity.setEnglishLevel(request.getEnglishLevel());
-
+        studentEntity.setComExp(request.getComExp());
         rateService.saveRate(studentEntity);
         studentRepository.save(studentEntity);
     }
