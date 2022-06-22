@@ -11,11 +11,7 @@ public class StudentEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
     @Column
-    String firstName;
-    @Column
-    String secondName;
-    @Column
-    String lastName;
+    String fullName;
     @Column
     String email;
     @Column
@@ -24,16 +20,18 @@ public class StudentEntity {
     String city;
     @Column
     boolean diploma;
+    @Column (name = "programming_exp")
+    ExperienceTime programming;
     @Column
-    String technicalSkills;
+    Stack stack;
     @Column
-    byte englishLevel;
+    boolean programmingParticipation;
     @Column
-    int workExperience;
+    boolean majorIT;
     @Column
-    int programmingExperience;
-    @Column
-    int coursesExperience;
+    EnglishLevel englishLevel;
+
+
 
 
 }
