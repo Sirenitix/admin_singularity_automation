@@ -15,6 +15,5 @@ public interface StudentService {
     List<StudentEntity> getAllStudents();
 
     List<StudentEntity> getAllStudentsWithoutDiploma();
-
-
+    void setStatus( Integer status, Long id);
 }

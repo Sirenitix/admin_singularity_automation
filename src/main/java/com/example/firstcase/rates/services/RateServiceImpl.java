@@ -3,6 +3,7 @@ package com.example.firstcase.rates.services;
 import com.example.firstcase.rates.entities.RateEntity;
 import com.example.firstcase.rates.repositories.RateRepository;
 import com.example.firstcase.students.entities.*;
+import com.example.firstcase.students.repositories.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +14,9 @@ import java.util.List;
 public class RateServiceImpl implements RateService {
     @Autowired
     RateRepository rateRepository;
+
+    @Autowired
+    StudentRepository studentRepository;
 
     @Override
     public void saveRate(StudentEntity studentEntity) {
@@ -53,13 +57,14 @@ public class RateServiceImpl implements RateService {
         else if (studentEntity.getEnglishLevel().equals(EnglishLevel.PROFICIENT)) rateEntity.setEnglishLevel((byte) 5);
         else rateEntity.setEnglishLevel((byte) 0);
 
-        rateEntity.setTotal(rateEntity.getDiploma() +
-                            rateEntity.getProgrammingExperience() +
-                            rateEntity.getComExp() +
-                            rateEntity.getProgrammingParticipation() +
-                            rateEntity.getMajorIT() +
-                            rateEntity.getEnglishLevel()
-                            );
+        int total = rateEntity.getDiploma() +
+                rateEntity.getProgrammingExperience() +
+                rateEntity.getComExp() +
+                rateEntity.getProgrammingParticipation() +
+                rateEntity.getMajorIT() +
+                rateEntity.getEnglishLevel();
+        studentRepository.setTotal(total, studentEntity.getId());
+        rateEntity.setTotal(total);
         rateRepository.save(rateEntity);
     }
 

@@ -6,7 +6,6 @@ import lombok.Data;
 @Data
 public class StudentRegistrationRequest {
 
-
     String fullName;
     String email;
     String phoneNumber;

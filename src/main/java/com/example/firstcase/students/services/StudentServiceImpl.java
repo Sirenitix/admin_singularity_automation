@@ -33,6 +33,7 @@ public class StudentServiceImpl implements StudentService{
             studentEntity.setProgrammingParticipation(request.isProgrammingParticipation());
             studentEntity.setStack(Stack.valueOf(request.getStack()));
             studentEntity.setMajorIT(request.isMajorIT());
+            studentEntity.setStatus(1);
             studentEntity.setEnglishLevel(EnglishLevel.valueOf(request.getEnglishLevel()));
 
         studentRepository.save(studentEntity);
@@ -53,5 +54,10 @@ public class StudentServiceImpl implements StudentService{
     @Override
     public List<StudentEntity> getAllStudentsWithoutDiploma() {
         return studentRepository.findAllByProgrammingIsNotAndAndDiplomaIsNot(StudyTime.FROM12MONTH,true);
+    }
+
+    @Override
+    public void setStatus(Integer status, Long id) {
+        studentRepository.setStatus(status, id);
     }
 }

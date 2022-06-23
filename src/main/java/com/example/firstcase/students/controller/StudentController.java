@@ -36,4 +36,10 @@ public class StudentController {
         return studentService.getAllStudentsWithoutDiploma();
     }
 
+    @PostMapping("/status")
+    public String setStatus(@RequestParam Long id, @RequestParam Integer status) {
+        studentService.setStatus(status, id);
+        return "Success";
+    }
+
 }
