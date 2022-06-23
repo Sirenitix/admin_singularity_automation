@@ -10,11 +10,11 @@ import java.util.List;
 public interface StudentService {
     void saveStudent(StudentRegistrationRequest request);
 
-    List<StudentEntity> getAllStudentsForJobOff(Integer offset, Integer limit);
+    List<StudentEntity> getAllStudentsForJobOff();
 
-    List<StudentEntity> getAllStudents(Integer offset, Integer limit);
+    List<StudentEntity> getAllStudents();
 
-    List<StudentEntity> getAllStudentsWithoutDiploma(Integer offset, Integer limit);
+    List<StudentEntity> getAllStudentsWithoutDiploma();
 
 
 }
