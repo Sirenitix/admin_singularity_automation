@@ -1,6 +1,9 @@
 package com.example.firstcase.tables.services;
 
+import com.example.firstcase.tables.entities.TableEntity;
+import com.example.firstcase.tables.repository.TableRepository;
 import org.apache.poi.ss.usermodel.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -14,6 +17,8 @@ public class TableServiceImpl implements TableService {
     static final String DB_URL = "jdbc:postgresql://localhost:5432/postgres";
     static final String USER = "postgres";
     static final String PASS = "123456";
+    @Autowired
+    TableRepository tableRepository;
 
 
     @Override
@@ -46,6 +51,7 @@ public class TableServiceImpl implements TableService {
                 stmt.executeUpdate(sql);
             }
 
+
             String column = "";
             for (int i = 0; i < columnNames.size() - 1; i++) {
                 column = column + columnNames.get(i) + ", ";
@@ -68,9 +74,11 @@ public class TableServiceImpl implements TableService {
                 }
                 preparedStatement.executeUpdate();
             }
+            preparedStatement.close();
 
 
             System.out.println("Created table in given database...");
+            createTable(columnNames, conn);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -94,7 +102,7 @@ public class TableServiceImpl implements TableService {
                     stringBuilder.append(name.charAt(i));
             }
             if (columnNames.contains(stringBuilder.toString())) {
-                stringBuilder.append("_"+repeat);
+                stringBuilder.append("_" + repeat);
                 repeat++;
             }
 
@@ -110,5 +118,30 @@ public class TableServiceImpl implements TableService {
             Cell cell = row.getCell(cellNo);
             return formatter.formatCellValue(cell);
         }
+    }
+
+
+    private void createTable(List list, Connection conn) {
+
+        try (Statement stmt = conn.createStatement()) {
+            String sql = "SELECT user_id, invitation_email,total FROM tabel_uspevaemosti_data";
+            ResultSet rs = stmt.executeQuery(sql);
+            TableEntity tableEntity = new TableEntity();
+            while (rs.next()) {
+                String id = rs.getString("user_id");
+                String email = rs.getString("invitation_email");
+                tableEntity.setStepikID(id);
+                tableEntity.setEmail(email);
+                tableEntity.setProgress("total");
+                tableRepository.save(tableEntity);
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+        //STEP 5: Extract data from result set
+
     }
 }
