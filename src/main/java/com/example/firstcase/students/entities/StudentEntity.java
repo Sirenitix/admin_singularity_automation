@@ -30,5 +30,9 @@ public class StudentEntity {
     boolean majorIT;
     @Column
     EnglishLevel englishLevel;
+    @Column
+    Integer status;
+    @Column
+    Integer total;
 
 }

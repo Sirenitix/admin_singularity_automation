@@ -22,22 +22,24 @@ public class StudentController {
     }
 
     @GetMapping("/students")
-    public List<StudentEntity> getStudents(@RequestParam("offset") Integer offset,
-                                           @RequestParam("limit") Integer limit) {
-        return studentService.getAllStudents(offset, limit);
+    public List<StudentEntity> getStudents() {
+        return studentService.getAllStudents();
     }
 
     @GetMapping("/joboffer")
-    public List<StudentEntity> getStudentsWithExperience(@RequestParam("offset") Integer offset,
-                                                         @RequestParam("limit") Integer limit) {
-        return studentService.getAllStudentsForJobOff(offset, limit);
+    public List<StudentEntity> getStudentsWithExperience() {
+        return studentService.getAllStudentsForJobOff();
     }
 
     @GetMapping("/diploma")
-    public List<StudentEntity> getStudentsWithoutDiploma(@RequestParam("offset") Integer offset,
-                                                         @RequestParam("limit") Integer limit) {
-        return studentService.getAllStudentsWithoutDiploma(offset, limit);
+    public List<StudentEntity> getStudentsWithoutDiploma() {
+        return studentService.getAllStudentsWithoutDiploma();
     }
 
+    @PostMapping("/status")
+    public String setStatus(@RequestParam Long id, @RequestParam Integer status) {
+        studentService.setStatus(status, id);
+        return "Success";
+    }
 
 }

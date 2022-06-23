@@ -25,6 +25,8 @@ CREATE TABLE student
     stack                     INTEGER,
     majorit                   BOOLEAN,
     english_level             INTEGER,
+    status                    INTEGER,
+    total                     INTEGER,
     CONSTRAINT pk_student PRIMARY KEY (id)
 );
 
