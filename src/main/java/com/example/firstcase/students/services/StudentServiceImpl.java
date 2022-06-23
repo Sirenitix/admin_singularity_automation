@@ -52,6 +52,7 @@ public class StudentServiceImpl implements StudentService{
 
     @Override
     public List<StudentEntity> getAllStudentsWithoutDiploma() {
-        return studentRepository.findAllByProgrammingIsNotAndAndDiplomaIsNot(ExperienceTime.FROM12MONTH,false);
+        return studentRepository.findAllByProgrammingIsNotAndDiplomaIs(StudyTime.FROM12MONTH,false);
     }
+
 }

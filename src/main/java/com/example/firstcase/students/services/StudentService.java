@@ -15,4 +15,5 @@ public interface StudentService {
 
     List<StudentEntity> getAllStudentsWithoutDiploma();
 
+
 }

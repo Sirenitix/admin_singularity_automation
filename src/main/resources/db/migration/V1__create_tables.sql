@@ -8,7 +8,7 @@ CREATE TABLE rate
     programming_participation SMALLINT,
     majorit                   SMALLINT,
     english_level             SMALLINT,
-    total                     int8,
+    total                     INTEGER,
     CONSTRAINT pk_rate PRIMARY KEY (id)
 );
 
