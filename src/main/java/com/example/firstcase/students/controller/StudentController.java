@@ -24,17 +24,19 @@ public class StudentController {
     @GetMapping("/students")
     public List<StudentEntity> getStudents(@RequestParam("offset") Integer offset,
                                            @RequestParam("limit") Integer limit) {
-        return studentService.getAllStudents();
+        return studentService.getAllStudents(offset, limit);
     }
 
     @GetMapping("/joboffer")
-    public List<StudentEntity> getStudentsWithExperience() {
-        return studentService.getAllStudentsForJobOff();
+    public List<StudentEntity> getStudentsWithExperience(@RequestParam("offset") Integer offset,
+                                                         @RequestParam("limit") Integer limit) {
+        return studentService.getAllStudentsForJobOff(offset, limit);
     }
 
     @GetMapping("/diploma")
-    public List<StudentEntity> getStudentsWithoutDiploma() {
-        return studentService.getAllStudentsWithoutDiploma();
+    public List<StudentEntity> getStudentsWithoutDiploma(@RequestParam("offset") Integer offset,
+                                                         @RequestParam("limit") Integer limit) {
+        return studentService.getAllStudentsWithoutDiploma(offset, limit);
     }
 
 }
