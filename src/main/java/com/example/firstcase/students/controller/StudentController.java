@@ -36,6 +36,6 @@ public class StudentController {
     public List<StudentEntity> getStudentsWithoutDiploma() {
         return studentService.getAllStudentsWithoutDiploma();
     }
-    
+
 
 }
