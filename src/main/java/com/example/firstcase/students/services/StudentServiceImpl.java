@@ -42,7 +42,7 @@ public class StudentServiceImpl implements StudentService{
 
     @Override
     public List<StudentEntity> getAllStudentsForJobOff() {
-        return studentRepository.findAllByProgrammingEquals(ExperienceTime.FROM12MONTH);
+        return studentRepository.findAllByComExpEquals(ExperienceTime.FROM12MONTH);
     }
 
     @Override

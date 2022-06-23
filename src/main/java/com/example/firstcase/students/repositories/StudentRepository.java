@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 public interface StudentRepository extends JpaRepository<StudentEntity,Long> {
 
-    List<StudentEntity> findAllByProgrammingEquals(ExperienceTime experienceTime);
+    List<StudentEntity> findAllByComExpEquals(ExperienceTime experienceTime);
 
     List<StudentEntity> findAllByProgrammingIsNot(ExperienceTime experienceTime);
 
