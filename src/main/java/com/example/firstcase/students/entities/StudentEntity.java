@@ -19,9 +19,9 @@ public class StudentEntity {
     @Column
     boolean diploma;
     @Column
-    StudyTime comExp;
+    ExperienceTime comExp;
     @Column(name = "programming_exp")
-    ExperienceTime programming;
+    StudyTime programming;
     @Column
     boolean programmingParticipation;
     @Column

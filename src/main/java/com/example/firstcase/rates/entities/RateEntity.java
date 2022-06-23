@@ -19,12 +19,14 @@ public class RateEntity {
     @Column
     byte programmingExperience;
     @Column
-    byte studyTime;
+    byte comExp;
     @Column
     byte programmingParticipation;
     @Column
     byte majorIT;
     @Column
     byte englishLevel;
+    @Column
+    int total;
 
 }

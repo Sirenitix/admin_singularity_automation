@@ -4,10 +4,11 @@ CREATE TABLE rate
     student_id                BIGINT,
     diploma                   SMALLINT,
     programming_experience    SMALLINT,
-    study_time                SMALLINT,
+    com_exp                   SMALLINT,
     programming_participation SMALLINT,
     majorit                   SMALLINT,
     english_level             SMALLINT,
+    total                     int8,
     CONSTRAINT pk_rate PRIMARY KEY (id)
 );
 

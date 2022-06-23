@@ -22,13 +22,19 @@ public class StudentController {
     }
 
     @GetMapping("/students")
-    public List<StudentEntity> getStudents() {
+    public List<StudentEntity> getStudents(@RequestParam("offset") Integer offset,
+                                           @RequestParam("limit") Integer limit) {
         return studentService.getAllStudents();
     }
 
     @GetMapping("/joboffer")
     public List<StudentEntity> getStudentsWithExperience() {
         return studentService.getAllStudentsForJobOff();
+    }
+
+    @GetMapping("/diploma")
+    public List<StudentEntity> getStudentsWithoutDiploma() {
+        return studentService.getAllStudentsWithoutDiploma();
     }
 
 }

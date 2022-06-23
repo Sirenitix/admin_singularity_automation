@@ -18,14 +18,14 @@ public class RateServiceImpl implements RateService {
     public void saveRate(StudentEntity studentEntity) {
         RateEntity rateEntity = new RateEntity();
         rateEntity.setStudentEntity(studentEntity);
-        if (studentEntity.isDiploma()) rateEntity.setDiploma((byte) 1);
+        if (studentEntity.isDiploma()) rateEntity.setDiploma((byte) 1) ;
 
         if (studentEntity.getComExp().name().equals(ExperienceTime.F1TO6MONTH.name()))
-            rateEntity.setProgrammingExperience((byte) 1);
+            rateEntity.setComExp((byte) 1);
         else if (studentEntity.getComExp().name().equals(ExperienceTime.F6TO12MONTH.name()))
-            rateEntity.setProgrammingExperience((byte) 2);
+            rateEntity.setComExp((byte) 2);
         else if(studentEntity.getComExp().name().equals(ExperienceTime.NO.name()) )
-                rateEntity.setProgrammingExperience((byte) 0);
+                rateEntity.setComExp((byte) 0);
 
 //
 
@@ -40,7 +40,6 @@ public class RateServiceImpl implements RateService {
 
 //
 
-
         if (studentEntity.isProgrammingParticipation()) rateEntity.setProgrammingParticipation((byte) 1);
         if (studentEntity.isMajorIT()) rateEntity.setMajorIT((byte) 1);
 
@@ -54,6 +53,13 @@ public class RateServiceImpl implements RateService {
         else if (studentEntity.getEnglishLevel().equals(EnglishLevel.PROFICIENT)) rateEntity.setEnglishLevel((byte) 5);
         else rateEntity.setEnglishLevel((byte) 0);
 
+        rateEntity.setTotal(rateEntity.getDiploma() +
+                            rateEntity.getProgrammingExperience() +
+                            rateEntity.getComExp() +
+                            rateEntity.getProgrammingParticipation() +
+                            rateEntity.getMajorIT() +
+                            rateEntity.getEnglishLevel()
+                            );
         rateRepository.save(rateEntity);
     }
 

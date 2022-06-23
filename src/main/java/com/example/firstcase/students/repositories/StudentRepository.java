@@ -14,4 +14,7 @@ public interface StudentRepository extends JpaRepository<StudentEntity,Long> {
 
     List<StudentEntity> findAllByProgrammingIsNot(ExperienceTime experienceTime);
 
+
+    List<StudentEntity> findAllByProgrammingIsNotAndAndDiplomaIsNot(ExperienceTime experienceTime,Boolean diploma);
+
 }

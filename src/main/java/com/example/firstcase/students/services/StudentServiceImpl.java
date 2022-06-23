@@ -4,6 +4,8 @@ import com.example.firstcase.rates.services.RateService;
 import com.example.firstcase.students.entities.*;
 import com.example.firstcase.students.models.StudentRegistrationRequest;
 import com.example.firstcase.students.repositories.StudentRepository;
+import org.hibernate.Session;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,7 @@ public class StudentServiceImpl implements StudentService{
     @Autowired
     RateService rateService;
 
+
     @Override
     public void saveStudent(StudentRegistrationRequest request) {
 
@@ -25,8 +28,8 @@ public class StudentServiceImpl implements StudentService{
             studentEntity.setEmail(request.getEmail());
             studentEntity.setPhoneNumber(request.getPhoneNumber());
             studentEntity.setDiploma(request.isDiploma());
-            studentEntity.setComExp(StudyTime.valueOf(request.getComExp()));
-            studentEntity.setProgramming(ExperienceTime.valueOf(request.getProgramming()));
+            studentEntity.setComExp(ExperienceTime.valueOf(request.getComExp()));
+            studentEntity.setProgramming(StudyTime.valueOf(request.getProgramming()));
             studentEntity.setProgrammingParticipation(request.isProgrammingParticipation());
             studentEntity.setStack(Stack.valueOf(request.getStack()));
             studentEntity.setMajorIT(request.isMajorIT());
@@ -45,5 +48,10 @@ public class StudentServiceImpl implements StudentService{
     @Override
     public List<StudentEntity> getAllStudents() {
         return studentRepository.findAllByProgrammingIsNot(ExperienceTime.FROM12MONTH);
+    }
+
+    @Override
+    public List<StudentEntity> getAllStudentsWithoutDiploma() {
+        return studentRepository.findAllByProgrammingIsNotAndAndDiplomaIsNot(ExperienceTime.FROM12MONTH,false);
     }
 }
