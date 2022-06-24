@@ -20,7 +20,7 @@ public class EmailController {
     EmailSenderService emailSenderService;
 
 
-    @RequestMapping(value = "/", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping( method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
         public String sendEmails(@RequestBody List<Email> emails) {
         emails.forEach(email -> {
             try {
