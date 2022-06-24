@@ -55,7 +55,7 @@ public class StudentServiceImpl implements StudentService{
 
     @Override
     public List<StudentEntity> getAllStudents() {
-        List<StudentEntity> al = studentRepository.findAllByComExpIsNotAndDiplomaIsOrderByTotalDesc(ExperienceTime.FROM12MONTH, true);
+        List<StudentEntity> al = studentRepository.findAllByComExpIsNotAndDiplomaIsNotOrderByTotalDesc(ExperienceTime.FROM12MONTH, false);
         List<StudentEntity> firstHalf = new ArrayList<>();
         int x = al.size()/2 + (al.size()%2) - 1;
         for(int i = 0; i < x; i++){
@@ -66,7 +66,7 @@ public class StudentServiceImpl implements StudentService{
 
     @Override
     public List<StudentEntity> getAllStudentsWithoutDiploma() {
-        List<StudentEntity> al = studentRepository.findAllByComExpIsNotAndDiplomaIsNotOrderByTotalDesc(ExperienceTime.FROM12MONTH,true);
+        List<StudentEntity> al = studentRepository.findAllByComExpIsNotOrderByTotalAsc(ExperienceTime.FROM12MONTH);
         List<StudentEntity> firstHalf = new ArrayList<>();
         int x = al.size()/2 + (al.size()%2) - 1;
         for(int i = 0; i < x; i++){

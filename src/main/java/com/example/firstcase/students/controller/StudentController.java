@@ -31,7 +31,7 @@ public class StudentController {
         return studentService.getAllStudentsForJobOff();
     }
 
-    @GetMapping("/diploma")
+    @GetMapping("/dismissed")
     public List<StudentEntity> getStudentsWithoutDiploma() {
         return studentService.getAllStudentsWithoutDiploma();
     }

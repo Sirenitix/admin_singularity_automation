@@ -14,7 +14,7 @@ import java.util.List;
 @Repository
 public interface StudentRepository extends JpaRepository<StudentEntity,Long> {
 
-    List<StudentEntity> findAllByComExpIsNotAndDiplomaIsOrderByTotalDesc(ExperienceTime experienceTime, Boolean bul);
+    List<StudentEntity> findAllByComExpIsNotOrderByTotalAsc(ExperienceTime experienceTime);
 
     List<StudentEntity> findAllByComExpEqualsOrderByTotalDesc(ExperienceTime from12month);
 
