@@ -1,5 +1,6 @@
 package com.example.firstcase.students.repositories;
 
+import com.example.firstcase.students.entities.ExperienceTime;
 import com.example.firstcase.students.entities.StudentEntity;
 import com.example.firstcase.students.entities.StudyTime;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -13,11 +14,11 @@ import java.util.List;
 @Repository
 public interface StudentRepository extends JpaRepository<StudentEntity,Long> {
 
-    List<StudentEntity> findAllByProgrammingIsNotOrderByTotalDesc(StudyTime experienceTime);
+    List<StudentEntity> findAllByComExpIsNotAndDiplomaIsOrderByTotalDesc(ExperienceTime experienceTime, Boolean bul);
 
-    List<StudentEntity> findAllByProgrammingEqualsOrderByTotalDesc(StudyTime from12month);
+    List<StudentEntity> findAllByComExpEqualsOrderByTotalDesc(ExperienceTime from12month);
 
-    List<StudentEntity> findAllByProgrammingIsNotAndAndDiplomaIsNotOrderByTotalDesc(StudyTime from12month, boolean b);
+    List<StudentEntity> findAllByComExpIsNotAndDiplomaIsNotOrderByTotalDesc(ExperienceTime from12month, boolean b);
 
     @Transactional
     @Modifying
