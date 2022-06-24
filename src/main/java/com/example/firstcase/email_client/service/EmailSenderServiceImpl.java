@@ -22,7 +22,6 @@ public class EmailSenderServiceImpl implements EmailSenderService {
     public void sendEmailWithAttachment(Email toEmail) throws MessagingException {
 
         String body = "This email has attachment";
-        String attachment = "C:\\Users\\shabb\\Pictures\\c.gif";
         String subject = "This is Email Body with Attachment...";
 
         MimeMessage mimeMessage = mailSender.createMimeMessage();
@@ -34,12 +33,6 @@ public class EmailSenderServiceImpl implements EmailSenderService {
         mimeMessageHelper.setTo(toEmail.getEmail());
         mimeMessageHelper.setText(body);
         mimeMessageHelper.setSubject(subject);
-
-        FileSystemResource fileSystem
-                = new FileSystemResource(new File(attachment));
-
-        mimeMessageHelper.addAttachment(fileSystem.getFilename(),
-                fileSystem);
 
         mailSender.send(mimeMessage);
         System.out.println("Mail Send...");
