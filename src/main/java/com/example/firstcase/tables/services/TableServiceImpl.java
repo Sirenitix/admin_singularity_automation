@@ -14,9 +14,9 @@ import java.util.List;
 
 @Service
 public class TableServiceImpl implements TableService {
-    static final String DB_URL = "jdbc:postgresql://localhost:5432/postgres";
-    static final String USER = "postgres";
-    static final String PASS = "123456";
+    static final String DB_URL = "jdbc:postgresql://ec2-52-49-120-150.eu-west-1.compute.amazonaws.com:5432/d7nh4fa0f4uak4";
+    static final String USER = "uvfulupzfdmryy";
+    static final String PASS = "7d86d1bd787fdb2afca058ffd8d791d71144d6cfad37a9870d18e2f68bcb2abd";
     @Autowired
     TableRepository tableRepository;
 

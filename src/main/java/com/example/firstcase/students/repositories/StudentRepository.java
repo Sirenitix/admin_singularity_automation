@@ -13,11 +13,11 @@ import java.util.List;
 @Repository
 public interface StudentRepository extends JpaRepository<StudentEntity,Long> {
 
-    List<StudentEntity> findAllByProgrammingIsNot(StudyTime experienceTime);
+    List<StudentEntity> findAllByProgrammingIsNotOrderByTotalDesc(StudyTime experienceTime);
 
-    List<StudentEntity> findAllByProgrammingEquals(StudyTime from12month);
+    List<StudentEntity> findAllByProgrammingEqualsOrderByTotalDesc(StudyTime from12month);
 
-    List<StudentEntity> findAllByProgrammingIsNotAndAndDiplomaIsNot(StudyTime from12month, boolean b);
+    List<StudentEntity> findAllByProgrammingIsNotAndAndDiplomaIsNotOrderByTotalDesc(StudyTime from12month, boolean b);
 
     @Transactional
     @Modifying
